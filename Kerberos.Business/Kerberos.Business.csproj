@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kerberos.DataAccess\Kerberos.DataAccess.csproj" />
   </ItemGroup>
 

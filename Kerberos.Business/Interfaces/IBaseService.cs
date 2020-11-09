@@ -9,10 +9,10 @@ namespace Kerberos.Business.Interfaces
 {
     public interface IBaseService<TEntity> where TEntity : class, ITable, new()
     {
-        Task<List<TEntity>> GetAll();
-        Task<TEntity> GetById(int id);
-        Task Update(TEntity entity);
-        Task Add(TEntity entity);
-        Task Remove(TEntity entity);
+        Task<List<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIdAsync(int id);
+        Task UpdateAsync(TEntity entity);
+        Task AddAsync(TEntity entity);
+        Task RemoveAsync(TEntity entity);
     }
 }
