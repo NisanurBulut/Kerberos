@@ -1,4 +1,5 @@
-﻿using Kerberos.Entities.Concrete;
+﻿using Kerberos.DataAccess.Mapping;
+using Kerberos.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace Kerberos.DataAccess.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration<AppUser>(new AppUserMap());
+            modelBuilder.ApplyConfiguration<AppRole>(new AppRoleMap());
         }
         public DbSet<AppRole> tAppRole { get; set; }
         public DbSet<AppUser> tAppUser { get; set; }
