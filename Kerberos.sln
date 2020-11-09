@@ -14,9 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.DataAccess", "Kerb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Business", "Kerberos.Business\Kerberos.Business.csproj", "{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.WebAPI", "Kerberos.WebAPI\Kerberos.WebAPI.csproj", "{45807950-BC36-4CD0-A97C-8CC2D9E23A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.WebAPI", "Kerberos.WebAPI\Kerberos.WebAPI.csproj", "{45807950-BC36-4CD0-A97C-8CC2D9E23A36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.DataTransferObject", ".\Kerberos.DataTransferObject\Kerberos.DataTransferObject.csproj", "{106E0023-6573-44B0-A052-221DA3C65C3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.DataTransferObject", "Kerberos.DataTransferObject\Kerberos.DataTransferObject.csproj", "{106E0023-6573-44B0-A052-221DA3C65C3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.Util", "Kerberos.Util\Kerberos.Util.csproj", "{87DE6A93-6436-4AC9-97F3-A325580E73D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{106E0023-6573-44B0-A052-221DA3C65C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{106E0023-6573-44B0-A052-221DA3C65C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{106E0023-6573-44B0-A052-221DA3C65C3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
