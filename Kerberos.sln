@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Entities", "Kerber
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.DataAccess", "Kerberos.DataAccess\Kerberos.DataAccess.csproj", "{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.Business", "Kerberos.Business\Kerberos.Business.csproj", "{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
