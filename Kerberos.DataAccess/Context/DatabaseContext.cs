@@ -19,6 +19,8 @@ namespace Kerberos.DataAccess.Context
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration<AppUser>(new AppUserMap());
             modelBuilder.ApplyConfiguration<AppRole>(new AppRoleMap());
+            modelBuilder.ApplyConfiguration<AppUserRole>(new AppUserRoleMap());
+            modelBuilder.ApplyConfiguration<Product>(new ProductMap());
         }
         public DbSet<AppRole> tAppRole { get; set; }
         public DbSet<AppUser> tAppUser { get; set; }
