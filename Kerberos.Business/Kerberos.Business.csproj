@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kerberos.DataAccess\Kerberos.DataAccess.csproj" />
+    <ProjectReference Include="..\Kerberos.DataTransferObject\Kerberos.DataTransferObject.csproj" />
   </ItemGroup>
 
 </Project>

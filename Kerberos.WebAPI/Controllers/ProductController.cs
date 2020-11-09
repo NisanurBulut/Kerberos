@@ -16,6 +16,7 @@ namespace Kerberos.WebAPI.Controllers
         {
             _productService = productService;
         }
+       
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {

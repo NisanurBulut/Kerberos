@@ -1,15 +1,15 @@
-﻿using Kerberos.Business.Concrete;
+﻿using FluentValidation;
+using Kerberos.Business.Concrete;
 using Kerberos.Business.Interfaces;
 using Kerberos.DataAccess.Interfaces;
 using Kerberos.DataAccess.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Kerberos.DataTransferObject;
+using Kerberos.DataTransferObject.Validators;
 
 namespace Kerberos.Business.Extensions
 {
-   public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtension
     {
         public static void AddServiceCollectionExtension(this IServiceCollection services)
         {
@@ -28,6 +28,8 @@ namespace Kerberos.Business.Extensions
 
             services.AddScoped<IAppUserRoleRepository, AppUserRoleRepository>();
             services.AddScoped<IAppUserRoleService, AppUserRoleManager>();
+
+            services.AddTransient<IValidator<ProductDto>, ProductValidator>();
         }
     }
 }
