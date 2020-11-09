@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation.AspNetCore;
 using Kerberos.Business.Extensions;
+using Kerberos.Util.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,7 @@ namespace Kerberos.WebAPI
         {
             services.AddControllers().AddFluentValidation();
             services.AddServiceCollectionExtension();
+            services.AddScoped(typeof(IsValidIdActionFilter<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Kerberos.Business.Interfaces;
+using Kerberos.Entities.Concrete;
+using Kerberos.Util.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kerberos.WebAPI.Controllers
@@ -23,6 +25,7 @@ namespace Kerberos.WebAPI.Controllers
             return Ok(await _productService.GetAllAsync());
         }
         [HttpGet]
+        [ServiceFilter(typeof(IsValidIdActionFilter<Product>))]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             return Ok(await _productService.GetByIdAsync(id));
