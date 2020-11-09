@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Kerberos.Business.Concrete
 {
-    public class AppUserManager<TEntity> : BaseManager<AppUser>, IAppUserService
+    public class AppUserManager : BaseManager<AppUser>, IAppUserService
     {
         public AppUserManager(IBaseRepository<AppUser> baseRepo) : base(baseRepo)
         {

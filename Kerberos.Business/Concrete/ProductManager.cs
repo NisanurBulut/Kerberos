@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Kerberos.Business.Concrete
 {
-    public class ProductManager<TEntity> : BaseManager<Product>, IProductService
+    public class ProductManager : BaseManager<Product>, IProductService
     {
         public ProductManager(IBaseRepository<Product> baseRepo) : base(baseRepo)
         {

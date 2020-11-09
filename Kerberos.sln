@@ -8,11 +8,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".\Kerberos.Entities", "Kerberos.Entities\Kerberos.Entities.csproj", "{B2DFEC62-8BAD-4FC6-BF6A-32589BB03D96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Entities", "Kerberos.Entities\Kerberos.Entities.csproj", "{B2DFEC62-8BAD-4FC6-BF6A-32589BB03D96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = ".\Kerberos.DataAccess", "Kerberos.DataAccess\Kerberos.DataAccess.csproj", "{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.DataAccess", "Kerberos.DataAccess\Kerberos.DataAccess.csproj", "{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = ".\Kerberos.Business", "Kerberos.Business\Kerberos.Business.csproj", "{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Business", "Kerberos.Business\Kerberos.Business.csproj", "{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.WebAPI", "Kerberos.WebAPI\Kerberos.WebAPI.csproj", "{45807950-BC36-4CD0-A97C-8CC2D9E23A36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45807950-BC36-4CD0-A97C-8CC2D9E23A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45807950-BC36-4CD0-A97C-8CC2D9E23A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45807950-BC36-4CD0-A97C-8CC2D9E23A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45807950-BC36-4CD0-A97C-8CC2D9E23A36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
