@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kerberos.WebAPI.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/[Controller]/[action]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -17,9 +17,14 @@ namespace Kerberos.WebAPI.Controllers
             _productService = productService;
         }
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> GetAllAsync()
         {
-            return Ok();
+            return Ok(await _productService.GetAllAsync());
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            return Ok(await _productService.GetByIdAsync(id));
         }
     }
 }
