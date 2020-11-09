@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Kerberos.Entities.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Kerberos.Entities.Concrete
 {
-    public class AppUser
+    public class AppUser:ITable
     {
         public int Id { get; set; }
         public string FullName { get; set; }
