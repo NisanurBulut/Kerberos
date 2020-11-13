@@ -11,7 +11,7 @@ namespace Kerberos.DataAccess.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Kerberos.db");
+            optionsBuilder.UseSqlite("Data Source=../Kerberos.DataAccess/Kerberos.db;Cache=Shared");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

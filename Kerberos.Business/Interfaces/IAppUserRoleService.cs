@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Kerberos.Business.Interfaces
 {
-    public interface IAppUserRoleService:IBaseService<AppUserRole>
+    public interface IAppUserRoleService : IBaseService<AppUserRole>
     {
     }
 }

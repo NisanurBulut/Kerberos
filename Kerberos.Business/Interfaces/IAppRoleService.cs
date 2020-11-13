@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kerberos.Business.Interfaces
 {
-    public interface IAppRoleService:IBaseService<AppRole>
+    public interface IAppRoleService : IBaseService<AppRole>
     {
         Task<AppRole> FindRoleByName(string roleName);
     }

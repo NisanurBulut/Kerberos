@@ -11,8 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kerberos.Business\Kerberos.Business.csproj" />
-    <ProjectReference Include="..\Kerberos.DataAccess\Kerberos.DataAccess.csproj" />
-    <ProjectReference Include="..\Kerberos.Entities\Kerberos.Entities.csproj" />
   </ItemGroup>
 
 </Project>
