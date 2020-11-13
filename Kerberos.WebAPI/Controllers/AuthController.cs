@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Kerberos.Business.Interfaces;
+using Kerberos.Business.StringInfo;
 using Kerberos.DataTransferObject;
 using Kerberos.Entities.Concrete;
 using Kerberos.Util.Filters;
@@ -25,26 +26,37 @@ namespace Kerberos.WebAPI.Controllers
         public async Task<IActionResult> SignIn(AppUserLoginDto appUserLoginDto)
         {
             var appUser = await _appUserService.FindByUserName(appUserLoginDto.UserName);
-            if (appUser==null)
+            if (appUser == null)
             {
                 return BadRequest("Belirsiz kullanıcı adı ya da şifre hatalı");
             }
-            if(await _appUserService.CheckPassword(appUserLoginDto))
+            if (await _appUserService.CheckPassword(appUserLoginDto))
             {
                 var roles = await _appUserService.GetRolesByUserName(appUserLoginDto.UserName);
-                var token = _jwtService.GenerateJwt(appUser,roles);
+                var token = _jwtService.GenerateJwt(appUser, roles);
                 return Created("", "");
             }
             return BadRequest("Belirsiz kullanıcı adı ya da şifre hatalı");
         }
         [HttpPost(("[action]"))]
         [IsValidActionFilter]
-        public async Task<IActionResult> SignUp(AppUserDto appUserDto)
+        public async Task<IActionResult> SignUp(AppUserDto appUserDto,
+            [FromServices] IAppUserRoleService appUserRoleService,
+            [FromServices] IAppRoleService appRoleService)
         {
             var appUser = await _appUserService.FindByUserName(appUserDto.UserName);
             if (appUser != null)
                 return BadRequest($"{appUser.UserName} kullanılıyor.");
-           await _appUserService.AddAsync(_mapper.Map<AppUser>(appUserDto));
+
+            await _appUserService.AddAsync(_mapper.Map<AppUser>(appUserDto));
+            var user = await _appUserService.FindByUserName(appUser.UserName);
+            var role = await appRoleService.FindRoleByName(RoleInfo.Member);
+            await appUserRoleService.AddAsync(
+                new AppUserRole
+                {
+                    AppRoleId = role.Id,
+                    AppUserId = user.Id
+                });
             return Created("", "");
         }
     }
