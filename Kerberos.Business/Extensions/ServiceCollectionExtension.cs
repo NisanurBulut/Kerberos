@@ -30,7 +30,8 @@ namespace Kerberos.Business.Extensions
             services.AddScoped<IAppUserRoleService, AppUserRoleManager>();
 
             services.AddTransient<IValidator<ProductDto>, ProductValidator>();
-            services.AddTransient<IValidator<AppUserLoginDto>, AppUserValidator>();
+            services.AddTransient<IValidator<AppUserLoginDto>, AppUserLoginValidator>();
+            services.AddTransient<IValidator<AppUserDto>, AppUserValidator>();
             services.AddScoped<IJwtService, JwtManager>();
         }
     }
