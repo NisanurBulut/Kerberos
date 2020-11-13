@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Kerberos.Business.Interfaces;
 using Kerberos.Entities.Concrete;
 using Kerberos.Util.Filters;
@@ -13,10 +14,12 @@ namespace Kerberos.WebAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly IMapper _mapper;
         private readonly IProductService _productService;
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
        
         [HttpGet]

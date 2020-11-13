@@ -9,6 +9,7 @@ namespace Kerberos.DataTransferObject.Validators
     {
         public ProductValidator()
         {
+            RuleFor(a => a.Id).ExclusiveBetween(9,int.MaxValue);
             RuleFor(a => a.Name).NotEmpty().WithMessage("Ürün adı belirtilmelidir.");
         }
     }
