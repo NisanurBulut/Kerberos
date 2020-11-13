@@ -2,6 +2,7 @@
 using Kerberos.DataAccess.Interfaces;
 using Kerberos.DataTransferObject;
 using Kerberos.Entities.Concrete;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Kerberos.Business.Concrete
@@ -23,6 +24,11 @@ namespace Kerberos.Business.Concrete
         public async Task<AppUser> FindByUserName(string userName)
         {
             return await _appUserRepo.GetByFilterAsync(a => a.UserName == userName);
+        }
+
+        public async Task<List<AppRole>> GetRolesByUserName(string userName)
+        {
+            return await _appUserRepo.GetRolesByUserName(userName);
         }
     }
 }

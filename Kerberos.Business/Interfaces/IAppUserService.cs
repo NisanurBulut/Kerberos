@@ -11,5 +11,6 @@ namespace Kerberos.Business.Interfaces
     {
         Task<AppUser> FindByUserName(string userName);
         Task<bool> CheckPassword(AppUserLoginDto userLoginDto);
+        Task<List<AppRole>> GetRolesByUserName(string userName);
     }
 }
