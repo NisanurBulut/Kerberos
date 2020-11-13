@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using Kerberos.DataTransferObject;
 using Kerberos.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Kerberos.WebAPI.Mapping
+namespace Kerberos.Util.Mapping
 {
     public class MapProfile:Profile
     {
@@ -14,6 +10,8 @@ namespace Kerberos.WebAPI.Mapping
         {
             CreateMap<ProductDto, Product>();
             CreateMap<Product, ProductDto>();
+            CreateMap<AppUserDto, AppUser>();
+            CreateMap<AppUser, AppUserDto>();
         }
     }
 }
