@@ -55,6 +55,7 @@ namespace Kerberos.WebAPI.Controllers
             await _productService.UpdateAsync(_mapper.Map<Product>(productDto));
             return NoContent();
         }
+       
         [Route("Error")]
         public IActionResult Error()
         {

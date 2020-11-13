@@ -3,8 +3,11 @@ using Kerberos.Business.Interfaces;
 using Kerberos.Business.StringInfo;
 using Kerberos.DataTransferObject;
 using Kerberos.Entities.Concrete;
+using Kerberos.Entities.Token;
 using Kerberos.Util.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kerberos.WebAPI.Controllers
@@ -34,7 +37,9 @@ namespace Kerberos.WebAPI.Controllers
             {
                 var roles = await _appUserService.GetRolesByUserName(appUserLoginDto.UserName);
                 var token = _jwtService.GenerateJwt(appUser, roles);
-                return Created("", "");
+                JwtAccessToken jwtAccessToken = new JwtAccessToken();
+                jwtAccessToken.Token = token;
+                return Created("", jwtAccessToken);
             }
             return BadRequest("Belirsiz kullanıcı adı ya da şifre hatalı");
         }
@@ -58,6 +63,20 @@ namespace Kerberos.WebAPI.Controllers
                     AppUserId = user.Id
                 });
             return Created("", "");
+        }
+        [HttpGet("[action]")]
+        [Authorize]
+        public async Task<IActionResult> ActiveUser()
+        {
+            var user = await _appUserService.FindByUserName(User.Identity.Name);
+            var roles = await _appUserService.GetRolesByUserName(User.Identity.Name);
+            AppUserDto appUserDto = new AppUserDto
+            {
+                FullName = user.FullName,
+                UserName = user.UserName,
+                Roles = roles.Select(I => I.Name).ToList()
+            };
+            return Ok(appUserDto);
         }
     }
 }
