@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using Kerberos.Business.Extensions;
+using Kerberos.Business.Interfaces;
 using Kerberos.Business.StringInfo;
 using Kerberos.Util.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -29,7 +30,7 @@ namespace Kerberos.WebAPI
             services.AddServiceCollectionExtension();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(IsValidIdActionFilter<>));
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt=>
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
             {
                 opt.RequireHttpsMetadata = false;
                 opt.TokenValidationParameters = new TokenValidationParameters()
@@ -47,7 +48,7 @@ namespace Kerberos.WebAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAppUserService appUserService, IAppUserRoleService appUserRoleService, IAppRoleService appRoleService)
         {
             //if (env.IsDevelopment())
             //{
@@ -55,6 +56,7 @@ namespace Kerberos.WebAPI
             //}
             // localhost/Error
             app.UseExceptionHandler("/Error");
+            JwtIdentityInitializer.Seed(appUserService, appUserRoleService, appRoleService).Wait();
             app.UseAuthentication();
             app.UseRouting();
 
