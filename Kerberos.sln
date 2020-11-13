@@ -8,17 +8,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".\Kerberos.Entities", "Kerberos.Entities\Kerberos.Entities.csproj", "{B2DFEC62-8BAD-4FC6-BF6A-32589BB03D96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Entities", "Kerberos.Entities\Kerberos.Entities.csproj", "{B2DFEC62-8BAD-4FC6-BF6A-32589BB03D96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".\Kerberos.DataAccess", "Kerberos.DataAccess\Kerberos.DataAccess.csproj", "{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.DataAccess", "Kerberos.DataAccess\Kerberos.DataAccess.csproj", "{41AB2A6A-1BE8-42D2-AC5E-17A2150650D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".\Kerberos.Business", "Kerberos.Business\Kerberos.Business.csproj", "{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Business", "Kerberos.Business\Kerberos.Business.csproj", "{5F8A6AFF-2AE8-4FE4-A3C1-A0426F2FE37F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".\Kerberos.WebAPI", "Kerberos.WebAPI\Kerberos.WebAPI.csproj", "{45807950-BC36-4CD0-A97C-8CC2D9E23A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.WebAPI", "Kerberos.WebAPI\Kerberos.WebAPI.csproj", "{45807950-BC36-4CD0-A97C-8CC2D9E23A36}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".\Kerberos.DataTransferObject", "Kerberos.DataTransferObject\Kerberos.DataTransferObject.csproj", "{106E0023-6573-44B0-A052-221DA3C65C3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.DataTransferObject", "Kerberos.DataTransferObject\Kerberos.DataTransferObject.csproj", "{106E0023-6573-44B0-A052-221DA3C65C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = ".\Kerberos.Util", "Kerberos.Util\Kerberos.Util.csproj", "{87DE6A93-6436-4AC9-97F3-A325580E73D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kerberos.Util", "Kerberos.Util\Kerberos.Util.csproj", "{87DE6A93-6436-4AC9-97F3-A325580E73D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kerberos.ClientApp", "Kerberos.ClientApp\Kerberos.ClientApp.csproj", "{D77F4247-EBC2-46E3-86AC-A9EBB013D5D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87DE6A93-6436-4AC9-97F3-A325580E73D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77F4247-EBC2-46E3-86AC-A9EBB013D5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77F4247-EBC2-46E3-86AC-A9EBB013D5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77F4247-EBC2-46E3-86AC-A9EBB013D5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77F4247-EBC2-46E3-86AC-A9EBB013D5D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
