@@ -6,6 +6,7 @@ using AutoMapper;
 using Kerberos.Business.Interfaces;
 using Kerberos.Entities.Concrete;
 using Kerberos.Util.Filters;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kerberos.WebAPI.Controllers
@@ -32,6 +33,14 @@ namespace Kerberos.WebAPI.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             return Ok(await _productService.GetByIdAsync(id));
+        }
+        [Route("Error")]
+        public IActionResult Error()
+        {
+            var errorInfo=HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+           // errorInfo.Error.Message
+           // loglama
+            return Problem(detail:"An exception is occured in server side.");
         }
     }
 }
