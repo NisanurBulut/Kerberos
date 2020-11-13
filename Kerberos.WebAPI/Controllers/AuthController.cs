@@ -29,7 +29,8 @@ namespace Kerberos.WebAPI.Controllers
             }
             if(await _appUserService.CheckPassword(appUserLoginDto))
             {
-                var token = _jwtService.GenerateJwt(appUser,null);
+                var roles = await _appUserService.GetRolesByUserName(appUserLoginDto.UserName);
+                var token = _jwtService.GenerateJwt(appUser,roles);
                 return Created("", "");
             }
             return BadRequest("Belirsiz kullanıcı adı ya da şifre hatalı");
