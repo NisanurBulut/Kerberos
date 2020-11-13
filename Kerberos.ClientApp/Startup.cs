@@ -28,7 +28,7 @@ namespace Kerberos.ClientApp
             }
 
             app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
