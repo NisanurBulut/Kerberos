@@ -13,16 +13,26 @@ namespace Kerberos.WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IJwtService _jwtService;
-        public AuthController(IJwtService jwtService)
+        private readonly IAppUserService _appUserService;
+        public AuthController(IJwtService jwtService, IAppUserService appUserService)
         {
             _jwtService = jwtService;
+            _appUserService = appUserService;
         }
         [HttpGet]
-        public IActionResult SignIn(AppUserLoginDto appUserLoginDto)
+        public async Task<IActionResult> SignIn(AppUserLoginDto appUserLoginDto)
         {
-
-
-            return Created("","");
+            var appUser = await _appUserService.FindByUserName(appUserLoginDto.UserName);
+            if (appUser==null)
+            {
+                return BadRequest("Belirsiz kullanıcı adı ya da şifre hatalı");
+            }
+            if(await _appUserService.CheckPassword(appUserLoginDto))
+            {
+                var token = _jwtService.GenerateJwt(appUser,null);
+                return Created("", "");
+            }
+            return BadRequest("Belirsiz kullanıcı adı ya da şifre hatalı");
         }
     }
 }
