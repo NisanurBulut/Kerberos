@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using Kerberos.Business.Extensions;
+using Kerberos.Business.StringInfo;
 using Kerberos.Util.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -39,11 +40,12 @@ namespace Kerberos.WebAPI
                 opt.RequireHttpsMetadata = false;
                 opt.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidIssuer="http://localhost",
-                    ValidAudience= "http://localhost",
-                    IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes("nisanur")),
-                    ValidateIssuerSigningKey=true,
-                    ValidateLifetime=true
+                    ValidIssuer = JwtInfo.Isuer,
+                    ValidAudience = JwtInfo.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtInfo.Key)),
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero // server' varsayýlan zaman farký koyma,
                 };
             });
             services.AddControllers().AddFluentValidation();
