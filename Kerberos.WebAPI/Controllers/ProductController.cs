@@ -49,7 +49,7 @@ namespace Kerberos.WebAPI.Controllers
             await _productService.AddAsync(entity);
             return Created("", productDto);
         }
-        [HttpPut]
+        [HttpPut("[action]")]
         [Authorize(Roles = RoleInfo.Admin)]
         [IsValidActionFilter]
         public async Task<IActionResult> Update(ProductDto productDto)

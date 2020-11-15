@@ -34,9 +34,18 @@ namespace Kerberos.ClientApp.Controllers
             return View(model);
         }
         public async Task<IActionResult> Edit(int id)
-        {
-            
+        {   
             return View(await _productService.GetByIdAsync(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(ProductDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.UpdateAsync(model);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
         }
     }
 }

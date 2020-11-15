@@ -70,5 +70,20 @@ namespace Kerberos.ClientApp.ApiServices.Concrete
             }
             return null;
         }
+
+        public async Task UpdateAsync(ProductDto model)
+        {
+            var token = _httpContextAccessor.HttpContext.Session.GetString("token");
+            if (!string.IsNullOrEmpty(token))
+            {
+                string jsonData = JsonConvert.SerializeObject(model);
+                var stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                using var httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await httpClient.
+                PutAsync("http://localhost:56789/api/Product/Update", stringContent);
+
+            }
+        }
     }
 }
