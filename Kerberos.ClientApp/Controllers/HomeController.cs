@@ -16,16 +16,18 @@ namespace Kerberos.ClientApp.Controllers
         {
             _productService = productService;  
         }
-        [JwtAuthorize]
+        [JwtAuthorize(Roles ="Admin, Member")]
         public async Task<IActionResult> Index()
         {
             return View(await _productService.GetAllAsync());
         }
+        [JwtAuthorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Create(ProductDto model)
         {
             if(ModelState.IsValid)
@@ -35,11 +37,13 @@ namespace Kerberos.ClientApp.Controllers
             }
             return View(model);
         }
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {   
             return View(await _productService.GetByIdAsync(id));
         }
         [HttpPost]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(ProductDto model)
         {
             if (ModelState.IsValid)
@@ -50,6 +54,7 @@ namespace Kerberos.ClientApp.Controllers
             return View(model);
         }
         [HttpDelete]
+        [JwtAuthorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await _productService.DeleteAsync(id);
