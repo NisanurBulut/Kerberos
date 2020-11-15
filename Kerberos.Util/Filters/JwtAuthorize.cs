@@ -19,33 +19,27 @@ namespace Kerberos.Util.Filters
         public string Roles { get; set; }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var token = context.HttpContext.Session.GetString("token");
-            if (string.IsNullOrEmpty(token))
+            string token;
+            if (JwtAuthorizeHelper.CheckToken(context, out token))
             {
-                context.Result = new RedirectToActionResult("SignIn", "Account", null);
-            }
-           
-            using var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            HttpResponseMessage responseMessage = httpClient.GetAsync("http://localhost:56789/api/Auth/ActiveUser").Result;
-            if (responseMessage.StatusCode == HttpStatusCode.OK)
-            {
-               var activeUser = JwtAuthorizeHelper.GetActiveUser(responseMessage);
-                JwtAuthorizeHelper.CheckUserRole(activeUser,Roles,context);
-                // admin 
-                // admin, member
-
-                
-            }
-            else if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                context.HttpContext.Session.Remove("token");
-                context.Result = new RedirectToActionResult("SignIn", "Account", null);
-            }
-            else
-            {
-                var statusCode = responseMessage.StatusCode.ToString();
-                context.Result = new RedirectToActionResult("ApiError", "Account", new { code = statusCode });
+                var responseMessage = JwtAuthorizeHelper.GetActiveUserResponseMessage(token);
+                if (responseMessage.StatusCode == HttpStatusCode.OK)
+                {
+                    var activeUser = JwtAuthorizeHelper.GetActiveUser(responseMessage);
+                    JwtAuthorizeHelper.CheckUserRole(activeUser, Roles, context);
+                    // admin 
+                    // admin, member
+                }
+                else if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    context.HttpContext.Session.Remove("token");
+                    context.Result = new RedirectToActionResult("SignIn", "Account", null);
+                }
+                else
+                {
+                    var statusCode = responseMessage.StatusCode.ToString();
+                    context.Result = new RedirectToActionResult("ApiError", "Account", new { code = statusCode });
+                }
             }
         }
     }

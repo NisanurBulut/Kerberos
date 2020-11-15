@@ -1,11 +1,13 @@
 ﻿using Kerberos.DataTransferObject;
 using Kerberos.Util.Builders.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace Kerberos.Util.Filters
@@ -43,6 +45,23 @@ namespace Kerberos.Util.Filters
         public static AppUserDto GetActiveUser(HttpResponseMessage responseMessage)
         {
             return JsonConvert.DeserializeObject<AppUserDto>(responseMessage.Content.ReadAsStringAsync().Result);
+        }
+        public static bool CheckToken(ActionExecutingContext context, out string token)
+        {
+            token = context.HttpContext.Session.GetString("token");
+            if (string.IsNullOrEmpty(token))
+            {
+                return true;
+            }
+            context.Result = new RedirectToActionResult("SignIn", "Account", null);
+            return false;
+        }
+        public static HttpResponseMessage GetActiveUserResponseMessage(string token)
+        {
+            using var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            HttpResponseMessage responseMessage = httpClient.GetAsync("http://localhost:56789/api/Auth/ActiveUser").Result;
+            return responseMessage;
         }
     }
 }
