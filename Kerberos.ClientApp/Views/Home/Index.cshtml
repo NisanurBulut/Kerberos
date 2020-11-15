@@ -12,17 +12,13 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                    <td> <a class="btn btn-sm btn-dark" asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id"> Düzenle </a></td>
-                </tr>
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td> <a class="btn btn-sm btn-primary" asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id"> Düzenle </a></td>
+                <td> <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id"> Sil </a></td>
+            </tr>
             }
         </tbody>
     </table>
-}
-else
-{
-    <a class="btn btn-sm btn-primary" asp-action="SignIn" asp-controller="Account"> Giriş Yap </a>
-    <h4>Authorization hatası</h4>
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Kerberos.ClientApp.ApiServices.Interfaces;
 using Kerberos.DataTransferObject;
+using Kerberos.Util.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kerberos.ClientApp.Controllers
@@ -15,6 +16,7 @@ namespace Kerberos.ClientApp.Controllers
         {
             _productService = productService;  
         }
+        [JwtAuthorize]
         public async Task<IActionResult> Index()
         {
             return View(await _productService.GetAllAsync());
@@ -46,6 +48,12 @@ namespace Kerberos.ClientApp.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _productService.DeleteAsync(id);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

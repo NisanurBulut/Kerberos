@@ -57,6 +57,14 @@ namespace Kerberos.WebAPI.Controllers
             await _productService.UpdateAsync(_mapper.Map<Product>(productDto));
             return NoContent();
         }
+        [HttpDelete("{id}")]
+        [Authorize(Roles = RoleInfo.Admin)]
+        [ServiceFilter(typeof(IsValidIdActionFilter<Product>))]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _productService.RemoveAsync(new Product() { Id = id });
+            return NoContent();
+        }
 
         [Route("Error")]
         public IActionResult Error()

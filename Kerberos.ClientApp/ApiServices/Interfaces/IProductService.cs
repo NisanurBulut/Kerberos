@@ -9,6 +9,7 @@ namespace Kerberos.ClientApp.ApiServices.Interfaces
         Task<List<ProductDto>> GetAllAsync();
         Task AddAsync(ProductDto productDto);
         Task UpdateAsync(ProductDto productDto);
+        Task DeleteAsync(int id);
         Task<ProductDto> GetByIdAsync(int id);
     }
 }

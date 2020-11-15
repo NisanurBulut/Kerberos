@@ -33,7 +33,17 @@ namespace Kerberos.ClientApp.ApiServices.Concrete
 
             }
         }
-
+        public async Task DeleteAsync(int id)
+        {
+            var token = _httpContextAccessor.HttpContext.Session.GetString("token");
+            if (!string.IsNullOrEmpty(token))
+            {
+                using var httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await httpClient.
+                DeleteAsync($"http://localhost:56789/api/Product/{id}");
+            }
+        }
         public async Task<List<ProductDto>> GetAllAsync()
         {
             var token = _httpContextAccessor.HttpContext.Session.GetString("token");

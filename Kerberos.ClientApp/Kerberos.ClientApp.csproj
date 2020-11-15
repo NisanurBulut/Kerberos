@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kerberos.DataTransferObject\Kerberos.DataTransferObject.csproj" />
+    <ProjectReference Include="..\Kerberos.Util\Kerberos.Util.csproj" />
   </ItemGroup>
 
 </Project>
