@@ -1,4 +1,5 @@
 # KERBEROS
+* It is a Template Project For JWT-Token And Role Based API 
 * It is a JWT App
     * AppUser -> AppUserRole
     * AppRole -> AppUserRole
