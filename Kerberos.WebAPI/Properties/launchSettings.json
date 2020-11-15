@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Kerberos.WebAPI": {
+    "YSKProje.UdemyJwtProje.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
@@ -27,4 +27,5 @@
       }
     }
   }
+
 }

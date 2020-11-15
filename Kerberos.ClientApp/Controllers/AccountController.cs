@@ -27,7 +27,7 @@ namespace Kerberos.ClientApp.Controllers
             {
                 if (await _authService.LogIn(model))
                 {
-
+                    return RedirectToAction("Index","Home");
                 }
                 ModelState.AddModelError("","Kullanıcı adı veya şifre hatalı.");
             }

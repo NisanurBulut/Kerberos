@@ -27,6 +27,7 @@ namespace Kerberos.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddServiceCollectionExtension();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(IsValidIdActionFilter<>));
@@ -48,7 +49,10 @@ namespace Kerberos.WebAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAppUserService appUserService, IAppUserRoleService appUserRoleService, IAppRoleService appRoleService)
+        public void Configure(IApplicationBuilder app, 
+            IWebHostEnvironment env, 
+            IAppUserService appUserService, 
+            IAppUserRoleService appUserRoleService, IAppRoleService appRoleService)
         {
             //if (env.IsDevelopment())
             //{
@@ -56,16 +60,15 @@ namespace Kerberos.WebAPI
             //}
             // localhost/Error
             app.UseExceptionHandler("/Error");
-            JwtIdentityInitializer.Seed(appUserService, appUserRoleService, appRoleService).Wait();
-            app.UseAuthentication();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+          //  JwtIdentityInitializer.Seed(appUserService, appUserRoleService, appRoleService).Wait();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+           
         }
     }
 }

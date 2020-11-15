@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Kerberos.WebAPI.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -25,7 +25,8 @@ namespace Kerberos.WebAPI.Controllers
             _appUserService = appUserService;
             _mapper = mapper;
         }
-        [HttpGet]
+       
+        [HttpPost("[action]")]
         public async Task<IActionResult> SignIn(AppUserLoginDto appUserLoginDto)
         {
             var appUser = await _appUserService.FindByUserName(appUserLoginDto.UserName);

@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kerberos.WebAPI.Controllers
 {
-    [Route("api/[Controller]/[action]")]
+    [Route("api/[Controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -26,7 +26,7 @@ namespace Kerberos.WebAPI.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         [Authorize(Roles = RoleInfo.Admin + "," + RoleInfo.Member)]
         public async Task<IActionResult> GetAllAsync()
         {

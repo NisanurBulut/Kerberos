@@ -10,8 +10,16 @@ namespace Kerberos.Business.Concrete
 {
     public class AppUserRoleManager : BaseManager<AppUserRole>, IAppUserRoleService
     {
-        public AppUserRoleManager(IBaseRepository<AppUserRole> baseRepo) : base(baseRepo)
+        private readonly IAppUserRoleRepository _appUserRoleRepo;
+        public AppUserRoleManager(IBaseRepository<AppUserRole> baseRepo, IAppUserRoleRepository appUserRoleRepo) : base(baseRepo)
         {
+            _appUserRoleRepo = appUserRoleRepo;
+        }
+
+        public async Task<bool> CheckExistAppUserRole(AppUserRole appUserRole)
+        {
+            var result = await _appUserRoleRepo.GetByFilterAsync(a => a.AppRoleId == appUserRole.AppRoleId && a.AppUserId == appUserRole.AppUserId);
+            return result == null ? false : true;
         }
     }
 }

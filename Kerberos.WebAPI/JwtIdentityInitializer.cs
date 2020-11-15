@@ -41,11 +41,14 @@ namespace Kerberos.WebAPI
             }
             var role = await appRoleService.FindRoleByName(RoleInfo.Admin);
             var user = await appUserService.FindByUserName("nisanur");
-            await appUserRoleService.AddAsync(new AppUserRole
+            var entity = new AppUserRole
             {
                 AppUserId = user.Id,
-                AppRoleId=role.Id
-            });
+                AppRoleId = role.Id
+            };
+            var existAppUserRole = await appUserRoleService.CheckExistAppUserRole(entity);
+            if(!existAppUserRole)
+            await appUserRoleService.AddAsync(entity);
         }
     }
 }
