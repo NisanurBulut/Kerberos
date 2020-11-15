@@ -8,3 +8,6 @@
 * JWT Bearer Token
     * Issuer, audiance, expires, notBefore, claims, signingcredentials
     * JwtSecurityToken, JwtSecurityTokenHandler, handler.WriteToken(JwtSecurityToken)
+* Repository Pattern
+* Builder Designer Pattern
+* N-Tier Project
