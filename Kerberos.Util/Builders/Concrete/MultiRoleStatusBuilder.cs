@@ -8,6 +8,7 @@ namespace Kerberos.Util.Builders.Concrete
 {
     public class MultiRolestatusBuilder : StatusBuilder
     {
+
         public override Status GenerateStatus(AppUserDto activeUser, string roles)
         {
             Status access = new Status();
@@ -19,6 +20,7 @@ namespace Kerberos.Util.Builders.Concrete
                     if (activeUser.Roles.Contains(role))
                     {
                         access.AccessStatus = true;
+                        break;
                     }
                 }
             }

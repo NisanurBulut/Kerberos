@@ -1,5 +1,6 @@
 ﻿using Kerberos.DataTransferObject;
 using Kerberos.Entities.Concrete;
+using Kerberos.Util.Builders.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -23,41 +24,18 @@ namespace Kerberos.Util.Filters
             {
                 context.Result = new RedirectToActionResult("SignIn", "Account", null);
             }
-            bool access = false;
+           
             using var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var responseMessage = httpClient.GetAsync("http://localhost:56789/api/Auth/ActiveUser").Result;
-            var activeUser = JsonConvert.DeserializeObject<AppUserDto>(responseMessage.Content.ReadAsStringAsync().Result);
+            HttpResponseMessage responseMessage = httpClient.GetAsync("http://localhost:56789/api/Auth/ActiveUser").Result;
             if (responseMessage.StatusCode == HttpStatusCode.OK)
             {
+               var activeUser = JwtAuthorizeHelper.GetActiveUser(responseMessage);
+                JwtAuthorizeHelper.CheckUserRole(activeUser,Roles,context);
                 // admin 
                 // admin, member
 
-                if (!string.IsNullOrEmpty(Roles))
-                {
-                    if (Roles.Contains(","))
-                    {
-                        var acceptedRoles = Roles.Split(",");
-                        foreach (var role in acceptedRoles)
-                        {
-                            if (activeUser.Roles.Contains(role))
-                            {
-                                access = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (activeUser.Roles.Contains(Roles))
-                        {
-                            access = true;
-                        }
-                    }
-                    if (!access)
-                    {
-                        context.Result = new RedirectToActionResult("SignIn", "Account", null);
-                    }
-                }
+                
             }
             else if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
             {
