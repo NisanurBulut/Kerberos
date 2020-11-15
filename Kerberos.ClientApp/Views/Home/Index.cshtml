@@ -1,6 +1,13 @@
 ﻿@model List<ProductDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 @if (Model != null)
 {
+    <a class="btn btn-sm btn-success" asp-action="Create" asp-controller="Home"> Ürün Ekle </a>
     <table class="table table-sm table-bordered">
         <tbody>
             @foreach (var item in Model)
@@ -8,6 +15,7 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
+                    <td> <a class="btn btn-sm btn-dark" asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id"> Düzenle </a></td>
                 </tr>
             }
         </tbody>
@@ -15,6 +23,6 @@
 }
 else
 {
+    <a class="btn btn-sm btn-primary" asp-action="SignIn" asp-controller="Account"> Giriş Yap </a>
     <h4>Authorization hatası</h4>
-    <a asp-action="SignIn" asp-controller="Account"></a>
 }

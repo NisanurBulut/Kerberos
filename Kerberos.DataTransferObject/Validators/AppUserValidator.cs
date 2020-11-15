@@ -8,7 +8,7 @@ namespace Kerberos.DataTransferObject.Validators
     {
         public AppUserValidator()
         {
-            RuleFor(a => a.Id).ExclusiveBetween(1, int.MaxValue);
+            RuleFor(a => a.Id).InclusiveBetween(0, int.MaxValue);
             RuleFor(a => a.UserName).NotEmpty().WithMessage("Kullanıcı adı belirtilmelidir.");
             RuleFor(a => a.FullName).NotEmpty().WithMessage("Ad soyad belirtilmelidir.");
             RuleFor(a => a.Password).NotEmpty().WithMessage("Parola belirtilmelidir.");

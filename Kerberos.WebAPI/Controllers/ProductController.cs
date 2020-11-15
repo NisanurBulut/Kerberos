@@ -26,36 +26,38 @@ namespace Kerberos.WebAPI.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet]
         [Authorize(Roles = RoleInfo.Admin + "," + RoleInfo.Member)]
         public async Task<IActionResult> GetAllAsync()
         {
             return Ok(await _productService.GetAllAsync());
         }
-        [HttpGet]
-        [Authorize(Roles = RoleInfo.Admin)]
+        [HttpGet("{id}")]
         [ServiceFilter(typeof(IsValidIdActionFilter<Product>))]
+        [Authorize(Roles = RoleInfo.Admin)]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             return Ok(await _productService.GetByIdAsync(id));
         }
-        [HttpPost]
+
+        [HttpPost("[action]")]
         [Authorize(Roles = RoleInfo.Admin)]
         [IsValidActionFilter]
-        public async Task<IActionResult> AddProduct(ProductDto productDto)
+        public async Task<IActionResult> Add(ProductDto productDto)
         {
-            await _productService.AddAsync(_mapper.Map<Product>(productDto));
+            Product entity = _mapper.Map<Product>(productDto);
+            await _productService.AddAsync(entity);
             return Created("", productDto);
         }
         [HttpPut]
         [Authorize(Roles = RoleInfo.Admin)]
         [IsValidActionFilter]
-        public async Task<IActionResult> UpdateProduct(ProductDto productDto)
+        public async Task<IActionResult> Update(ProductDto productDto)
         {
             await _productService.UpdateAsync(_mapper.Map<Product>(productDto));
             return NoContent();
         }
-       
+
         [Route("Error")]
         public IActionResult Error()
         {

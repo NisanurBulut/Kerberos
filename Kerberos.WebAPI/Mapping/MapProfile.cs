@@ -2,7 +2,7 @@
 using Kerberos.DataTransferObject;
 using Kerberos.Entities.Concrete;
 
-namespace Kerberos.Util.Mapping
+namespace Kerberos.WebAPI.Mapping
 {
     public class MapProfile:Profile
     {

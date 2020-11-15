@@ -8,7 +8,7 @@ namespace Kerberos.Util.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var errors = context.ModelState.Values.SelectMany(a => a.Errors).Select(a => a.ErrorMessage);
+           // var errors = context.ModelState.Values.SelectMany(a => a.Errors).Select(a => a.ErrorMessage);
 
             if(!context.ModelState.IsValid)
             {

@@ -1,0 +1,21 @@
+﻿@model ProductDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" class="w-75 mx-auto p-3 mt-4" asp-action="Create" asp-controller="Home">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <span asp-validation-for="@Model.Name"></span>
+        <input asp-for="@Model.Name" class="form-control" type="text" />
+    </div>
+   
+    <a class="btn btn-sm btn-warning" asp-action="Index" asp-controller="Home">Vazgeç</a>
+    <button type="submit" class="btn btn-sm btn-primary">Kaydet</button>
+    <div asp-validation-summary="ModelOnly" class="text-center">
+    </div>
+</form>
+
+

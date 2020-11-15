@@ -3,7 +3,7 @@
     ViewData["Title"] = "SignIn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form method="post" class="w-75 mx-auto p-3 mt-4" action="">
+<form method="post" class="w-75 mx-auto p-3 mt-4">
     <div class="form-group">
         <label asp-for="UserName"></label>
         <span asp-validation-for="@Model.UserName"></span>
@@ -15,7 +15,7 @@
         <input asp-for="@Model.Password" class="form-control" type="password" />
     </div>
     <button type="submit" class="btn btn-sm btn-primary">Giriş Yap</button>
-    <a class="btn btn-sm btn-primary" asp-action="SignUp" asp-controller="Account">Kayıt Ol</a>
+    <a class="btn btn-sm btn-warning" asp-action="SignUp" asp-controller="Account">Kayıt Ol</a>
     <div asp-validation-summary="ModelOnly" class="text-center">
     </div>
 </form>
